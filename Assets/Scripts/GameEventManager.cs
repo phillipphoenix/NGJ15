@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-/*
+
 public class GameEventManager
 {
     public delegate void GameEvent();
@@ -15,4 +15,4 @@ public class GameEventManager
             WaterPickup();
         }
     }
-}*/
+}

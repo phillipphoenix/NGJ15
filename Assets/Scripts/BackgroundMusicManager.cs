@@ -3,25 +3,45 @@ using System.Collections;
 
 public enum MusicState
 {
-
+    BEGIN, PH1, PH2, PH3, PH4
 }
 
 public class BackgroundMusicManager : MonoBehaviour
 {
     public AudioSource audioStart, musicGrass, musicGrassSeq, musicWater, musicStone, musicConstant;
+    private int state = 0;
 
     void Start()
     {
-        //AudioSource.PlayClipAtPoint(audioStart, Vector3.zero, 1f);
-        musicConstant.volume = 1f;
-        audioStart.volume = 0f;
+        ChangeMusic();
     }
 
     public void ChangeMusic()
     {
-        //musicConstant.volume = 1f;
-        StartCoroutine(FadeIn(audioStart));
-        StartCoroutine(FadeOut(musicConstant));
+        state++;
+        if (state == 1) // Begin state
+        {
+            StartCoroutine(FadeIn(audioStart));
+        }
+        else if (state == 2) // Grass state
+        {
+            StartCoroutine(FadeOut(audioStart));
+            StartCoroutine(FadeIn(musicConstant));
+            StartCoroutine(FadeIn(musicGrass));
+        }
+        else if (state == 3) // Water state
+        {
+            StartCoroutine(FadeIn(musicWater));
+        }
+        else if (state == 4) // Wooden plank encounter
+        {
+            StartCoroutine(FadeOut(musicGrass));
+            StartCoroutine(FadeIn(musicGrassSeq));
+        }
+        else if (state == 5) // Sand state
+        {
+            StartCoroutine(FadeIn(musicStone));
+        }
     }
 
     IEnumerator FadeIn(AudioSource audio)

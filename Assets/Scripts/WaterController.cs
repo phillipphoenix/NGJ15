@@ -3,19 +3,18 @@ using System.Collections;
 
 public class WaterController : MonoBehaviour
 {
-    /*void OnEnable()
-    {
-        GameEventManager.WaterPickup += WaterPickup;
-    }*/
+    BackgroundMusicManager backgroundMusic;
     Animator anim;
 
     void Awake()
     {
+        backgroundMusic = GameObject.Find("BackgroundMusic").GetComponent<BackgroundMusicManager>();
         anim = GetComponent<Animator>();
     }
 
     public void WaterPickup()
     {
         anim.SetTrigger("FadeIn");
+        backgroundMusic.ChangeMusic();
     }
 }
