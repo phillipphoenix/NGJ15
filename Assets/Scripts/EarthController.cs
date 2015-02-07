@@ -4,6 +4,7 @@ using System.Collections;
 public class EarthController : MonoBehaviour {
 
     public SpriteRenderer[] earthSprites;
+    public EdgeCollider2D bridgeCollider;
     private float alpha = 0f;
 
     void Awake()
@@ -21,7 +22,9 @@ public class EarthController : MonoBehaviour {
 
     public void FadeInSprites()
     {
+        bridgeCollider.enabled = false;
         StartCoroutine(FadeIn());
+
     }
 
     IEnumerator FadeIn()
