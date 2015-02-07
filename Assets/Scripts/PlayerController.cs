@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
         temp.x += speed * h * Time.deltaTime;
         temp.y += speed * v * Time.deltaTime;
         transform.position = temp;*/
-        rigidbody2D.velocity = new Vector2(speed * h * Time.deltaTime, speed * v * Time.deltaTime);
+        rigidbody2D.velocity = new Vector2(h, v);
+        rigidbody2D.velocity = rigidbody2D.velocity.normalized * speed * Time.deltaTime;
 
         if (v != 0f || h != 0f)
         {
@@ -30,8 +31,13 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Walking", false);
         }
 
-        float angle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, -Vector3.forward);
+        if (h != 0f || v != 0f)
+        {
+            float angle = Mathf.Atan2(h, v) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, -Vector3.forward);
+        }
+
+        
 
     }
 }

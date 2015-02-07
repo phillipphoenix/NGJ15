@@ -3,11 +3,13 @@ using System.Collections;
 
 public class SoundWaveController : MonoBehaviour
 {
-    public WaterController waterController;
+    WaterController waterController;
+    BackgroundMusicManager backgroundMusic;
 
     void Awake()
     {
         waterController = GameObject.Find("Water").GetComponent<WaterController>();
+        backgroundMusic = GameObject.Find("BackgroundMusic").GetComponent<BackgroundMusicManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -17,6 +19,7 @@ public class SoundWaveController : MonoBehaviour
             gameObject.SetActive(false);
             //GameEventManager.TriggerWaterPickup();
             waterController.WaterPickup();
+            backgroundMusic.ChangeMusic();
         }
     }
 }
