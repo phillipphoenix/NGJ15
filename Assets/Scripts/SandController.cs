@@ -1,31 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaterController : MonoBehaviour
-{
-    public SpriteRenderer[] waterSprites;
-    private float alpha = 0f;
+public class SandController : MonoBehaviour {
 
-    BackgroundMusicManager backgroundMusic;
-    Animator anim;
+    public SpriteRenderer[] sandSprites;
+    private float alpha = 0f;
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
-        foreach (var sprite in waterSprites)
+        foreach (var sprite in sandSprites)
         {
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
         }
     }
 
-    public void WaterPickup()
+    void Update()
     {
-        anim.SetTrigger("FadeIn");
+
     }
 
     public void FadeInSprites()
     {
         StartCoroutine(FadeIn());
+
     }
 
     IEnumerator FadeIn()
@@ -33,11 +30,12 @@ public class WaterController : MonoBehaviour
         while (alpha < 1f)
         {
             alpha += 0.1f;
-            foreach (var sprite in waterSprites)
+            foreach (var sprite in sandSprites)
             {
                 sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
             }
             yield return new WaitForSeconds(0.2f);
         }
     }
+
 }

@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum MusicState
-{
-    BEGIN, PH1, PH2, PH3, PH4
-}
-
 public class BackgroundMusicManager : MonoBehaviour
 {
     public AudioSource audioStart, musicGrass, musicGrassSeq, musicWater, musicStone, musicConstant;
