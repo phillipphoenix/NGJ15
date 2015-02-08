@@ -5,6 +5,7 @@ public class SoundWaveController : MonoBehaviour
 {
     public AudioSource pickupAudioSource;
 
+    CameraController mainCamera;
     SoundPickupController soundPickupController;
 
     BackgroundMusicManager backgroundMusic;
@@ -15,6 +16,7 @@ public class SoundWaveController : MonoBehaviour
 
     void Awake()
     {
+        mainCamera = GameObject.Find("MainCamera").GetComponent<CameraController>();
         soundPickupController = GameObject.Find("SoundPickups").GetComponent<SoundPickupController>();
         backgroundMusic = GameObject.Find("BackgroundMusic").GetComponent<BackgroundMusicManager>();
 
@@ -46,6 +48,7 @@ public class SoundWaveController : MonoBehaviour
             {
                 backgroundMusic.ChangeMusic();
                 earthController.FadeInSprites();
+                mainCamera.ZoomSlowly(5.4f);
             }
             else if (soundPickupController.soundPickupState == 2) // Water state
             {
@@ -53,11 +56,13 @@ public class SoundWaveController : MonoBehaviour
                 waterController.WaterPickup();
                 waterController.FadeInSprites();
                 //woodController.FadeAndZoom();
+                mainCamera.ZoomSlowly(5.8f);
             }
             else if (soundPickupController.soundPickupState == 3) // Sand state
             {
                 backgroundMusic.ChangeMusic();
                 sandController.FadeInSprites();
+                mainCamera.ZoomSlowly(6.20f);
             }
             
             
