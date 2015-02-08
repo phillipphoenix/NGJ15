@@ -4,6 +4,7 @@ using System.Collections;
 public class BackgroundMusicManager : MonoBehaviour
 {
     public AudioSource audioStart, musicGrass, musicGrassSeq, musicWater, musicStone, musicConstant;
+    public AudioSource windSound;
     private int state = 0;
 
     void Start()
@@ -23,6 +24,7 @@ public class BackgroundMusicManager : MonoBehaviour
             StartCoroutine(FadeOut(audioStart));
             StartCoroutine(FadeIn(musicConstant));
             StartCoroutine(FadeIn(musicGrass));
+            StartCoroutine(FadeIn(windSound));
         }
         else if (state == 3) // Water state
         {

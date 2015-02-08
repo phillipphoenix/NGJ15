@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     {
         Vector3 temp = Vector3.Lerp(transform.position, new Vector3(transform.position.x, player.position.y, player.position.z), smooth);
         temp.z = -10f;
+
         transform.position = temp;
     }
 
