@@ -11,7 +11,6 @@ public class SoundWaveController : MonoBehaviour
     BackgroundMusicManager backgroundMusic;
     EarthController earthController;
     WaterController waterController;
-    PieceOfWoodController woodController;
     SandController sandController;
 
     void Awake()
@@ -25,7 +24,6 @@ public class SoundWaveController : MonoBehaviour
 
         // Water state
         waterController = GameObject.Find("Water").GetComponent<WaterController>();
-        woodController = GameObject.Find("PieceOfWood").GetComponent<PieceOfWoodController>();
 
         // Sand state
         sandController = GameObject.Find("Sand").GetComponent<SandController>();
@@ -41,7 +39,8 @@ public class SoundWaveController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            pickupAudioSource.Play();
+            //pickupAudioSource.Play();
+            AudioSource.PlayClipAtPoint(pickupAudioSource.clip, Vector3.zero);
             soundPickupController.soundPickupState++;
             gameObject.SetActive(false);
             if (soundPickupController.soundPickupState == 1) // Grass state

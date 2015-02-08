@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameEventManager
 {
+    public static bool gameOver = false;
+
     public delegate void GameEvent();
     public static GameEvent WaterPickup;
 

@@ -22,6 +22,11 @@ public class WhiteBoxController : MonoBehaviour {
 	
 	}
 
+    public void FadeInWhiteBox()
+    {
+        StartCoroutine(FadeIn());
+    }
+
     IEnumerator FadeOut()
     {
         while (alpha > 0f)
@@ -30,6 +35,15 @@ public class WhiteBoxController : MonoBehaviour {
             whiteSprite.color = new Color(whiteSprite.color.r, whiteSprite.color.g, whiteSprite.color.b, alpha);
             yield return new WaitForSeconds(0.1f);
         }
-        Destroy(this);
+    }
+
+    IEnumerator FadeIn()
+    {
+        while (alpha < 1f)
+        {
+            alpha += 0.015f;
+            whiteSprite.color = new Color(whiteSprite.color.r, whiteSprite.color.g, whiteSprite.color.b, alpha);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

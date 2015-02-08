@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     Animator anim;
 
+    public Transform target;
+
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -13,6 +15,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameEventManager.gameOver == true)
+        {
+            anim.SetBool("Walking", false);
+            return;
+        }
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         /*Vector3 temp = transform.position;

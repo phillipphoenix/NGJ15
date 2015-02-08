@@ -58,4 +58,15 @@ public class BackgroundMusicManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
     }
+
+    public void FadeOutAllMusic()
+    {
+        StartCoroutine(FadeOut(audioStart));
+        StartCoroutine(FadeOut(musicConstant));
+        StartCoroutine(FadeOut(musicGrass));
+        StartCoroutine(FadeOut(musicGrassSeq));
+        StartCoroutine(FadeOut(musicWater));
+        StartCoroutine(FadeOut(musicStone));
+        StartCoroutine(FadeOut(windSound));
+    }
 }
